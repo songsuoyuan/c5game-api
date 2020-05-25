@@ -101,7 +101,7 @@ def get_c5_csgo_price_api(item_name):
         avg_price = round(avg_price, 2)
         return avg_price, price_list, need_list, api_url, purchase_url
     except:
-        return None, None, None, None
+        return None, None, None, None, None
 
 
 if __name__ == '__main__':
