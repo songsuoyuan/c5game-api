@@ -22,7 +22,7 @@ def c5_price():
     if '|' in item_name:
         avg_price, price_list, need_list, api_url, purchase_url = get_c5_csgo_price_api(item_name)
         if avg_price:
-            db.c5game.insert({'name':item_name, 'buy_price':price_list[0], 'url':purchase_url, 'api_url':api_url, 'timestamp':datetime.now()})
+            db.c5game.insert({'name':item_name, 'buy_price':avg_price, 'url':purchase_url, 'api_url':api_url, 'timestamp':datetime.now()})
     # try dota
     else:
         avg_price, price_list, need_list = get_c5_price_api(item_name)
@@ -30,7 +30,7 @@ def c5_price():
         if avg_price is None:
             avg_price, price_list, need_list, api_url, purchase_url = get_c5_csgo_price_api(item_name)
             if avg_price:
-                db.c5game.insert({'name':item_name, 'buy_price':price_list[0], 'url':purchase_url, 'api_url':api_url, 'timestamp':datetime.now()})
+                db.c5game.insert({'name':item_name, 'buy_price':avg_price, 'url':purchase_url, 'api_url':api_url, 'timestamp':datetime.now()})
     if avg_price is None:
         return jsonify({'hash_name':item_name, 
                         'steam_prices_net_price':None, 
