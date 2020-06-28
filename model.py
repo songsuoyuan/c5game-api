@@ -7,13 +7,7 @@ from get_price import get_c5_price_api, get_c5_csgo_price_api
 
 app = Flask(__name__)
 
-<<<<<<< HEAD
 app.config['MONGO_URI'] = 'mongodb://ssy:zhouzhou2013@47.110.138.247:27017/csgo'
-#app.config['MONGO_URI'] = 'mongodb://ssy:zhouzhou2013@localhost:27017/dota2'
-=======
-#app.config['MONGO_URI'] = 'mongodb://ssy:zhouzhou2013@47.110.138.247:27017/csgo'
-app.config['MONGO_URI'] = 'mongodb://ssy:zhouzhou2013@localhost:27017/csgo'
->>>>>>> e74a0560c9f2f094fbcaca65d0ed83dbebd65c36
 app.config['JSON_AS_ASCII'] = False
 
 mongo = PyMongo(app)
