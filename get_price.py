@@ -1,3 +1,4 @@
+import time
 import urllib
 import requests
 from bs4 import BeautifulSoup
@@ -21,6 +22,7 @@ def get_c5_price_api(item_name):
     item_url = ('https://www.c5game.com/dota.html?min=&max=&only=on&k={0}&rarity=&quality=&hero=&tag=&sort='
                 .format(urllib.parse.quote(item_name)))
     try:
+        time.sleep(0.5)
         r = requests.get(item_url, cookies=cookie_c5, headers=header_c5, timeout=10)
         soup = BeautifulSoup(r.text, 'html.parser')
         item_list = soup.find('div', {'class':'keys'})
@@ -28,6 +30,7 @@ def get_c5_price_api(item_name):
         for span in span_list:
             span = span.text
             api_url = 'https://www.c5game.com/api/product/purchase.json?id={0}&page=1&_=1578838056651'.format(span)
+            time.sleep(0.5)
             r_json = requests.get(api_url, cookies=cookie_c5, headers=header_c5, timeout=10)
             purchase_list = r_json.json()['body']['items']
             hash_name = purchase_list[0]['item']['market_hash_name']
@@ -73,11 +76,13 @@ def get_c5_csgo_price_api(item_name):
         item_url = ('https://www.c5game.com/csgo/default/result.html?min=&max=&only=on&k={0}&csgo_filter_category=&rarity=&quality=&exterior=&sort=&type=&tag='
                     .format(urllib.parse.quote(item_name)))
     try:
+        time.sleep(0.5)
         r = requests.get(item_url, cookies=cookie_c5, headers=header_c5, timeout=10)
         soup = BeautifulSoup(r.text, 'html.parser')
         item_list = soup.find_all('li', {'class':'purchaseing'})
         for item in item_list:
             purchase_url = 'https://www.c5game.com' + item.a.get('href')
+            time.sleep(0.5)
             r_item = requests.get(purchase_url, cookies=cookie_c5, headers=header_c5, timeout=10)
             soup_item = BeautifulSoup(r_item.text, 'html.parser')
             hash_name = soup_item.find('div', {'class':'steamUrl'}).a.get('href').split('/730/')[1]
