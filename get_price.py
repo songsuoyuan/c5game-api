@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def get_c5_price_api(item_name):
-    cookie_c5_str = 'MEIQIA_EXTRA_TRACK_ID=0rYfHD2wcmHCOZN6nfkVSh76hoo; isNewUser=-1; C5Lang=en; device_id=97c3f2c992b8e5ea33ec6c85d40207d9; Hm_lvt_86084b1bece3626cd94deede7ecf31a8=1578829961; C5SessionID=ostfu5kldqkhgnsa267p99p627; C5Sate=6f29823b8ef2ea1e8e8bc36b255eeeba6212e197a%3A4%3A%7Bi%3A0%3Bs%3A7%3A%222849904%22%3Bi%3A1%3Bs%3A11%3A%2214715025859%22%3Bi%3A2%3Bi%3A259200%3Bi%3A3%3Ba%3A0%3A%7B%7D%7D; C5Token=5e1b08914daf8; C5Login=2849904; c5IsBindPhone=1; c5user=14715025859; C5Appid=570; C5NewHome=1; Hm_lpvt_86084b1bece3626cd94deede7ecf31a8=1578830029'
+    cookie_c5_str = 'device_id=da7765bbb48ad582540f1f1f76d10d08; Hm_lvt_86084b1bece3626cd94deede7ecf31a8=1592502558,1592789658,1592835898,1593338858; C5Lang=en; C5SessionID=ccq6id0927jst4g43ifm742isd; C5Sate=f5030ac95a7edc889ced2722d7a49d05bce42a38a%3A4%3A%7Bi%3A0%3Bs%3A7%3A%222849904%22%3Bi%3A1%3Bs%3A11%3A%2214715025859%22%3Bi%3A2%3Bi%3A86400%3Bi%3A3%3Ba%3A0%3A%7B%7D%7D; C5Token=5ef8d07dcdb32; C5Login=2849904; c5IsBindPhone=1; c5user=14715025859; C5Appid=570; Hm_lpvt_86084b1bece3626cd94deede7ecf31a8=1593364607'
     cookie_c5_list = cookie_c5_str.split('; ')
     cookie_c5 = dict([p.split('=') for p in cookie_c5_list])
     header_c5 = {
@@ -54,7 +54,7 @@ def get_c5_price_api(item_name):
         return None, None, None
 
 def get_c5_csgo_price_api(item_name):
-    cookie_c5_str = 'MEIQIA_EXTRA_TRACK_ID=0rYfHD2wcmHCOZN6nfkVSh76hoo; isNewUser=-1; C5Lang=zh; device_id=97c3f2c992b8e5ea33ec6c85d40207d9; Hm_lvt_86084b1bece3626cd94deede7ecf31a8=1578829961; C5SessionID=ostfu5kldqkhgnsa267p99p627; C5Sate=6f29823b8ef2ea1e8e8bc36b255eeeba6212e197a%3A4%3A%7Bi%3A0%3Bs%3A7%3A%222849904%22%3Bi%3A1%3Bs%3A11%3A%2214715025859%22%3Bi%3A2%3Bi%3A259200%3Bi%3A3%3Ba%3A0%3A%7B%7D%7D; C5Token=5e1b08914daf8; C5Login=2849904; c5IsBindPhone=1; c5user=14715025859; C5Appid=570; C5NewHome=1; Hm_lpvt_86084b1bece3626cd94deede7ecf31a8=1578830029'
+    cookie_c5_str = 'device_id=da7765bbb48ad582540f1f1f76d10d08; Hm_lvt_86084b1bece3626cd94deede7ecf31a8=1592502558,1592789658,1592835898,1593338858; C5Lang=en; C5SessionID=ccq6id0927jst4g43ifm742isd; C5Sate=f5030ac95a7edc889ced2722d7a49d05bce42a38a%3A4%3A%7Bi%3A0%3Bs%3A7%3A%222849904%22%3Bi%3A1%3Bs%3A11%3A%2214715025859%22%3Bi%3A2%3Bi%3A86400%3Bi%3A3%3Ba%3A0%3A%7B%7D%7D; C5Token=5ef8d07dcdb32; C5Login=2849904; c5IsBindPhone=1; c5user=14715025859; C5Appid=570; Hm_lpvt_86084b1bece3626cd94deede7ecf31a8=1593364607'
     cookie_c5_list = cookie_c5_str.split('; ')
     cookie_c5 = dict([p.split('=') for p in cookie_c5_list])
     header_c5 = {
