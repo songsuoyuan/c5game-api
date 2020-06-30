@@ -22,8 +22,10 @@ def get_c5_price_api(item_name):
     item_url = ('https://www.c5game.com/dota.html?min=&max=&only=on&k={0}&rarity=&quality=&hero=&tag=&sort='
                 .format(urllib.parse.quote(item_name)))
     try:
-        time.sleep(1.0)
         r = requests.get(item_url, cookies=cookie_c5, headers=header_c5, timeout=10)
+        if r.status_code != 200:
+            time.sleep(1.0)
+            r = requests.get(item_url, cookies=cookie_c5, headers=header_c5, timeout=10)
         soup = BeautifulSoup(r.text, 'html.parser')
         item_list = soup.find_all('li', {'class':'purchaseing'})
         for item in item_list:
@@ -32,13 +34,10 @@ def get_c5_price_api(item_name):
             price = float(price)
             if name != item_name:
                 continue
-            price_list = []
-            need_list = []
             break
-        return price, price_list, need_list
+        return price, 'success'
     except Exception as e:
-        print(e)
-        return None, None, None
+        return None, str(e)
 
 def get_c5_csgo_price_api(item_name):
     cookie_c5_str = 'device_id=da7765bbb48ad582540f1f1f76d10d08; Hm_lvt_86084b1bece3626cd94deede7ecf31a8=1592502558,1592789658,1592835898,1593338858; C5Lang=en; C5SessionID=ccq6id0927jst4g43ifm742isd; C5Sate=f5030ac95a7edc889ced2722d7a49d05bce42a38a%3A4%3A%7Bi%3A0%3Bs%3A7%3A%222849904%22%3Bi%3A1%3Bs%3A11%3A%2214715025859%22%3Bi%3A2%3Bi%3A86400%3Bi%3A3%3Ba%3A0%3A%7B%7D%7D; C5Token=5ef8d07dcdb32; C5Login=2849904; c5IsBindPhone=1; c5user=14715025859; C5Appid=570; Hm_lpvt_86084b1bece3626cd94deede7ecf31a8=1593364607'
@@ -63,8 +62,10 @@ def get_c5_csgo_price_api(item_name):
         item_url = ('https://www.c5game.com/csgo/default/result.html?min=&max=&only=on&k={0}&csgo_filter_category=&rarity=&quality=&exterior=&sort=&type=&tag='
                     .format(urllib.parse.quote(item_name)))
     try:
-        time.sleep(1.0)
         r = requests.get(item_url, cookies=cookie_c5, headers=header_c5, timeout=10)
+        if r.status_code != 200:
+            time.sleep(1.0)
+            r = requests.get(item_url, cookies=cookie_c5, headers=header_c5, timeout=10)
         soup = BeautifulSoup(r.text, 'html.parser')
         item_list = soup.find_all('li', {'class':'purchaseing'})
         for item in item_list:
@@ -78,11 +79,9 @@ def get_c5_csgo_price_api(item_name):
             price_list = []
             need_list = []
             break
-        return price, price_list, need_list, api_url, purchase_url
+        return price, 'success'
     except Exception as e:
-        print(e)
-        return None, None, None, None, None
-
+        return None, str(e)
 
 if __name__ == '__main__':
     print(get_c5_csgo_price_api('★ M9 Bayonet'))
