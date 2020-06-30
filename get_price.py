@@ -76,8 +76,6 @@ def get_c5_csgo_price_api(item_name):
             price = float(price)
             if name != item_name:
                 continue
-            price_list = []
-            need_list = []
             break
         return price, 'success'
     except Exception as e:
